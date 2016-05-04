@@ -1,5 +1,5 @@
 # Spletna prodajalna e-Pesmi+
-
+// ne pusti mi commitat :(
 3\. domača naloga pri predmetu [Osnove informacijskih sistemov](https://ucilnica1516.fri.uni-lj.si/course/view.php?id=54) (navodila)
 
 ## Opis naloge in navodila
