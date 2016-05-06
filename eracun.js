@@ -194,7 +194,7 @@ var vrniRacune = function(callback) {
     }
   );
 }
-
+ var registracija = null;
 // Registracija novega uporabnika
 streznik.post('/prijava', function(zahteva, odgovor) {
   var form = new formidable.IncomingForm();
@@ -209,13 +209,16 @@ streznik.post('/prijava', function(zahteva, odgovor) {
     	  Phone, Fax, Email, SupportRepId) \
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
       //TODO: add fields and finalize
-      //stmt.run("", "", "", "", "", "", "", "", "", "", "", 3); 
-      //stmt.finalize();
+      stmt.run(polja.FirstName, polja.LastName, polja.Company, polja.Address, polja.City, polja.State, polja.Country, polja.PostalCode, polja.Phone, polja.Fax, polja.Email,  3); 
+      stmt.finalize();
+      registracija = true;
     } catch (err) {
       napaka2 = true;
+      registracija = false;
     }
   
-    odgovor.end();
+    odgovor.redirect('/prijava');
+    
   });
 })
 
@@ -223,7 +226,17 @@ streznik.post('/prijava', function(zahteva, odgovor) {
 streznik.get('/prijava', function(zahteva, odgovor) {
   vrniStranke(function(napaka1, stranke) {
       vrniRacune(function(napaka2, racuni) {
-        odgovor.render('prijava', {sporocilo: "", seznamStrank: stranke, seznamRacunov: racuni});  
+         if(registracija){
+          odgovor.render('prijava', {sporocilo: "Stranka je bila uspešno registrirana.", seznamStrank: stranke, seznamRacunov: racuni});  
+       }
+        else if(registracija == false) {
+          odgovor.render('prijava', {sporocilo: "Prišlo je do napake pri registraciji nove stranke. Prosim preverite vnešene podatke in poskusite znova.", seznamStrank: stranke, seznamRacunov: racuni});
+        }
+        else {
+         odgovor.render('prijava', {sporocilo: "Za registracijo vnesite podatke v ustrezna polja.", seznamStrank: stranke, seznamRacunov: racuni});
+       }
+        registracija = null;
+        
       }) 
     });
 })
