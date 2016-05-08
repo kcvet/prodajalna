@@ -173,26 +173,32 @@
 			<NazivNaslovPodjetja>
 				<VrstaPartnerja>BY</VrstaPartnerja>
 				<NazivPartnerja>
+
 					<NazivPartnerja1> <%= podatki.FirstName + " " + podatki.LastName %> </NazivPartnerja1>
+
 					<NazivPartnerja2><%= podatki.Company %></NazivPartnerja2>
 				
 				</NazivPartnerja>
 				<Ulica>
+
 					<Ulica1><%= podatki.Address %> </Ulica1>
 					
+
 				</Ulica>
 				<Kraj><%= podatki.City %> </Kraj>
 				<NazivDrzave><%= podatki.Country %> </NazivDrzave>
 				<PostnaStevilka><%= podatki.PostalCode %></PostnaStevilka>
-				
+
 			</NazivNaslovPodjetja>
 		
 			<KontaktiPodjetja>
 				<KontaktnaOseba>
-					<ImeOsebe> <%=podatki.FirstName + " " + podatki.LastName + " Email: " + podatki.Email  %>  </ImeOsebe>
+
+					<ImeOsebe><%=podatki.FirstName + " " + podatki.LastName + " Email: " + podatki.Email  %></ImeOsebe>
 				</KontaktnaOseba>
 				<Komunikacije>
-					<StevilkaKomunikacije><%= podatki.Phone %> </StevilkaKomunikacije>
+					<StevilkaKomunikacije><%= podatki.Phone %></StevilkaKomunikacije>
+
 					<VrstaKomunikacije>TE</VrstaKomunikacije>
 				</Komunikacije>
 				<Komunikacije>
